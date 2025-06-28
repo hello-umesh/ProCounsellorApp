@@ -21,10 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 
 import io.jsonwebtoken.Jwts;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -60,7 +58,7 @@ public class AuthController {
             if (!phoneNumber.startsWith("+")) {
                 phoneNumber = phoneNumber.replace(" ", "+");
             }
-            counsellor.setUserName(phoneNumber.replaceFirst("^\\+\\d{2}", ""));  // Derive userName from phone
+            counsellor.setUserName(UUID.randomUUID().toString());  // Derive userName from phone
             counsellor.setFirstName(firstName);
             counsellor.setLastName(lastName);
             counsellor.setPhoneNumber(phoneNumber);
